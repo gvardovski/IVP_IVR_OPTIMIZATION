@@ -1,0 +1,19 @@
+Data_flname: data/NASDAQ:ABNB_[2020-12-10:2025-12-24]_FMP.csv
+
+# Timeframe for backtesting 'year-month-day'
+Backtesting_dates:
+  start: '2010-01-04'
+  end: '2025-12-24'
+
+# size type: 'value' 'amount' 'percent'
+Trade:
+  size: 100
+  size_type: amount
+
+# Start cash value
+Initial_cash: 10000
+
+# IVP/IVR blend
+IVP/IVR blend: 
+  start: 25-35
+  end: 55-65

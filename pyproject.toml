@@ -1,0 +1,23 @@
+[project]
+name = "ivp-ivr-optimization"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "gvardovski",email = "gvardovski@icloud.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas (>=2.3.3,<3.0.0)",
+    "vectorbt (>=0.28.2,<0.29.0)",
+    "ipykernel (>=7.1.0,<8.0.0)",
+    "pyaml (>=25.7.0,<26.0.0)",
+    "anywidget (>=0.9.21,<0.10.0)",
+    "nbformat (>=5.10.4,<6.0.0)",
+    "seaborn (>=0.13.2,<0.14.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
