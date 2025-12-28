@@ -1,6 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
+from functions import get_time_interval, make_wdir
 
 def create_hitmap(
     results_df,
@@ -8,7 +10,8 @@ def create_hitmap(
     output_dir="data/",
     figsize=(18, 12),
     cmap="coolwarm", 
-    file_path=""
+    file_path="", 
+    config={}
 ):
 
     required_cols = [
@@ -65,8 +68,7 @@ def create_hitmap(
     plt.ylabel("Blend Enter Range")
     plt.tight_layout()
 
-    wdir = file_path.split("_")[0]
-    os.makedirs(wdir, exist_ok=True)
+    wdir = make_wdir(file_path, config)
 
     path_po = file_path.split("/")[1]
     file_path = f"{wdir}/{path_po}"

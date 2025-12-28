@@ -1,11 +1,12 @@
 import os
+import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
+from functions import get_time_interval, make_wdir 
 
 def save_backtesting_results_to_pdf(pf, file_path, config):
-    wdir = file_path.split("_")[0]
-    os.makedirs(wdir, exist_ok=True)
+    wdir = make_wdir(file_path, config)
 
     path_po = file_path.split("/")[1]
     file_path = f"{wdir}/{path_po}_[{config['IVP/IVR blend']['start']}:{config['IVP/IVR blend']['end']}]_stats.pdf"
