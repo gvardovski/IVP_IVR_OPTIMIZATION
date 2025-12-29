@@ -2,7 +2,7 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-from functions import get_time_interval, make_wdir
+from functions import make_wdir
 
 def create_hitmap(
     results_df,

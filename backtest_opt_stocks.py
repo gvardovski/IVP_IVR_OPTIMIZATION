@@ -11,7 +11,7 @@ def processdata(config):
     df.drop(columns=['Volume'], inplace=True)
     df.dropna(inplace=True)
 
-    roll = df['IV'].rolling(window=252, min_periods=120)
+    roll = df['IV'].rolling(window=120, min_periods=60)
     df['IVR'] = (df['IV'] - roll.min()) / (roll.max() - roll.min()) * 100
 
     def calc_percentile(x):
@@ -68,40 +68,40 @@ def backtest(df, blend):
 if __name__ == "__main__":
     
     instruments = [
-    {"Token": "AAPL", "Path": "NASDAQ:AAPL_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "ABNB", "Path": "NASDAQ:ABNB_[2020-12-10][2025-12-24]_FMP.csv"},
-    {"Token": "AMD",  "Path": "NASDAQ:AMD_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "AMZN", "Path": "NASDAQ:AMZN_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "BABA", "Path": "NASDAQ:BABA_[2014-09-19][2025-12-24]_FMP.csv"},
-    {"Token": "COIN", "Path": "NASDAQ:COIN_[2021-04-14][2025-12-24]_FMP.csv"},
-    # !!!{"Token": "CRCL", "Path": "NASDAQ:CRCL_[2025-06-04][2025-12-24]_FMP.csv"},
-    {"Token": "CVNA", "Path": "NASDAQ:CVNA_[2017-04-28][2025-12-24]_FMP.csv"},
-    {"Token": "DIS",  "Path": "NASDAQ:DIS_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "DKNG", "Path": "NASDAQ:DKNG_[2019-07-25][2025-12-24]_FMP.csv"},
-    {"Token": "GDX",  "Path": "NASDAQ:GDX_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "GME",  "Path": "NASDAQ:GME_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "GOOGL","Path": "NASDAQ:GOOGL_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "HIMS", "Path": "NASDAQ:HIMS_[2019-09-13][2025-12-24]_FMP.csv"},
-    {"Token": "HOOD", "Path": "NASDAQ:HOOD_[2021-07-29][2025-12-24]_FMP.csv"},
-    {"Token": "IBIT", "Path": "NASDAQ:IBIT_[2024-01-11][2025-12-24]_FMP.csv"},
-    {"Token": "JPM",  "Path": "NASDAQ:JPM_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "MARA", "Path": "NASDAQ:MARA_[2012-05-04][2025-12-24]_FMP.csv"},
-    {"Token": "META", "Path": "NASDAQ:META_[2012-05-18][2025-12-24]_FMP.csv"},
-    {"Token": "MRNA", "Path": "NASDAQ:MRNA_[2018-12-07][2025-12-24]_FMP.csv"},
-    {"Token": "MSFT", "Path": "NASDAQ:MSFT_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "MSTR", "Path": "NASDAQ:MSTR_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "NFLX", "Path": "NASDAQ:NFLX_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "NVDA", "Path": "NASDAQ:NVDA_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "PLTR", "Path": "NASDAQ:PLTR_[2020-09-30][2025-12-24]_FMP.csv"},
-    {"Token": "PYPL", "Path": "NASDAQ:PYPL_[2015-07-06][2025-12-24]_FMP.csv"},
-    {"Token": "RBLX", "Path": "NASDAQ:RBLX_[2021-03-10][2025-12-24]_FMP.csv"},
-    {"Token": "RDDT", "Path": "NASDAQ:RDDT_[2024-03-21][2025-12-24]_FMP.csv"},
-    {"Token": "SMCI", "Path": "NASDAQ:SMCI_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "SMCI", "Path": "NASDAQ:SMCI_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "SNOW", "Path": "NASDAQ:SNOW_[2020-09-16][2025-12-24]_FMP.csv"},
-    {"Token": "TSLA", "Path": "NASDAQ:TSLA_[2010-06-29][2025-12-24]_FMP.csv"},
-    {"Token": "TSM",  "Path": "NASDAQ:TSM_[2010-01-04][2025-12-24]_FMP.csv"},
-    {"Token": "XOM",  "Path": "NASDAQ:XOM_[2010-01-04][2025-12-24]_FMP.csv"}
+    {"Token": "AAPL", "Path": "NASDAQ-AAPL_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "ABNB", "Path": "NASDAQ-ABNB_[2020-12-10][2025-12-24]_FMP.csv"},
+    {"Token": "AMD",  "Path": "NASDAQ-AMD_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "AMZN", "Path": "NASDAQ-AMZN_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "BABA", "Path": "NASDAQ-BABA_[2014-09-19][2025-12-24]_FMP.csv"},
+    {"Token": "COIN", "Path": "NASDAQ-COIN_[2021-04-14][2025-12-24]_FMP.csv"},
+    # !!!{"Token": "CRCL", "Path": "NASDAQ-CRCL_[2025-06-04][2025-12-24]_FMP.csv"},
+    {"Token": "CVNA", "Path": "NASDAQ-CVNA_[2017-04-28][2025-12-24]_FMP.csv"},
+    {"Token": "DIS",  "Path": "NASDAQ-DIS_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "DKNG", "Path": "NASDAQ-DKNG_[2019-07-25][2025-12-24]_FMP.csv"},
+    {"Token": "GDX",  "Path": "NASDAQ-GDX_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "GME",  "Path": "NASDAQ-GME_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "GOOGL","Path": "NASDAQ-GOOGL_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "HIMS", "Path": "NASDAQ-HIMS_[2019-09-13][2025-12-24]_FMP.csv"},
+    {"Token": "HOOD", "Path": "NASDAQ-HOOD_[2021-07-29][2025-12-24]_FMP.csv"},
+    {"Token": "IBIT", "Path": "NASDAQ-IBIT_[2024-01-11][2025-12-24]_FMP.csv"},
+    {"Token": "JPM",  "Path": "NASDAQ-JPM_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "MARA", "Path": "NASDAQ-MARA_[2012-05-04][2025-12-24]_FMP.csv"},
+    {"Token": "META", "Path": "NASDAQ-META_[2012-05-18][2025-12-24]_FMP.csv"},
+    {"Token": "MRNA", "Path": "NASDAQ-MRNA_[2018-12-07][2025-12-24]_FMP.csv"},
+    {"Token": "MSFT", "Path": "NASDAQ-MSFT_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "MSTR", "Path": "NASDAQ-MSTR_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "NFLX", "Path": "NASDAQ-NFLX_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "NVDA", "Path": "NASDAQ-NVDA_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "PLTR", "Path": "NASDAQ-PLTR_[2020-09-30][2025-12-24]_FMP.csv"},
+    {"Token": "PYPL", "Path": "NASDAQ-PYPL_[2015-07-06][2025-12-24]_FMP.csv"},
+    {"Token": "RBLX", "Path": "NASDAQ-RBLX_[2021-03-10][2025-12-24]_FMP.csv"},
+    {"Token": "RDDT", "Path": "NASDAQ-RDDT_[2024-03-21][2025-12-24]_FMP.csv"},
+    {"Token": "SMCI", "Path": "NASDAQ-SMCI_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "SMCI", "Path": "NASDAQ-SMCI_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "SNOW", "Path": "NASDAQ-SNOW_[2020-09-16][2025-12-24]_FMP.csv"},
+    {"Token": "TSLA", "Path": "NASDAQ-TSLA_[2010-06-29][2025-12-24]_FMP.csv"},
+    {"Token": "TSM",  "Path": "NASDAQ-TSM_[2010-01-04][2025-12-24]_FMP.csv"},
+    {"Token": "XOM",  "Path": "NASDAQ-XOM_[2010-01-04][2025-12-24]_FMP.csv"}
     ]
 
     for ins in instruments:
